@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
         padding: 0;
         box-sizing: border-box;
       }
+
 
       :root {
         /* Light Mode Colors */
@@ -26,6 +27,7 @@
         --gold: #ffd700;
       }
 
+
       [data-theme="dark"] {
         /* Dark Mode Colors */
         --bg-gradient-start: #1a202c;
@@ -41,6 +43,7 @@
         --gold: #ffed4e;
       }
 
+
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(
@@ -55,6 +58,7 @@
         padding: 20px;
         transition: background 0.5s ease;
       }
+
 
       .theme-toggle {
         position: fixed;
@@ -76,9 +80,11 @@
         animation: fadeIn 0.5s ease;
       }
 
+
       .theme-toggle:hover {
         transform: scale(1.1) rotate(15deg);
       }
+
 
       .container {
         background: var(--container-bg);
@@ -93,6 +99,7 @@
         margin: 40px 0;
       }
 
+
       .poster {
         width: 100%;
         max-width: 500px;
@@ -104,9 +111,11 @@
         transition: transform 0.3s ease;
       }
 
+
       .poster:hover {
         transform: scale(1.02);
       }
+
 
       .hero-title {
         color: var(--text-primary);
@@ -117,6 +126,7 @@
         transition: color 0.3s ease;
       }
 
+
       .hero-subtitle {
         color: var(--gold);
         font-size: 20px;
@@ -124,6 +134,7 @@
         margin-bottom: 25px;
         animation: fadeIn 1s ease;
       }
+
 
       .version {
         display: inline-block;
@@ -138,6 +149,7 @@
         transition: all 0.3s ease;
       }
 
+
       .welcome-section {
         background: var(--feature-bg);
         padding: 25px;
@@ -147,12 +159,14 @@
         transition: all 0.3s ease;
       }
 
+
       .welcome-section h2 {
         color: var(--text-primary);
         font-size: 24px;
         margin-bottom: 15px;
         transition: color 0.3s ease;
       }
+
 
       .welcome-section p {
         color: var(--text-secondary);
@@ -162,11 +176,13 @@
         transition: color 0.3s ease;
       }
 
+
       .treasure-icon {
         font-size: 40px;
         margin: 10px 0;
         animation: bounce 2s infinite;
       }
+
 
       .download-btn {
         display: inline-block;
@@ -186,6 +202,7 @@
         margin: 20px 0;
       }
 
+
       .download-btn::before {
         content: "";
         position: absolute;
@@ -199,19 +216,23 @@
         transition: width 0.6s ease, height 0.6s ease;
       }
 
+
       .download-btn:hover::before {
         width: 400px;
         height: 400px;
       }
+
 
       .download-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
       }
 
+
       .download-btn:active {
         transform: translateY(0);
       }
+
 
       .section {
         text-align: left;
@@ -221,6 +242,7 @@
         border-radius: 15px;
         transition: all 0.3s ease;
       }
+
 
       .section h3 {
         color: var(--text-primary);
@@ -232,15 +254,18 @@
         transition: color 0.3s ease;
       }
 
+
       .section-icon {
         font-size: 28px;
       }
+
 
       .step-list,
       .rule-list {
         list-style: none;
         padding: 0;
       }
+
 
       .step-item,
       .rule-item {
@@ -252,6 +277,7 @@
         position: relative;
         transition: color 0.3s ease;
       }
+
 
       .step-item::before {
         content: "✓";
@@ -267,6 +293,7 @@
         font-weight: bold;
       }
 
+
       .rule-item::before {
         content: "•";
         position: absolute;
@@ -276,6 +303,7 @@
         font-weight: bold;
       }
 
+
       .winning-criteria {
         display: flex;
         justify-content: space-around;
@@ -283,6 +311,7 @@
         flex-wrap: wrap;
         gap: 15px;
       }
+
 
       .criteria-badge {
         background: var(--accent-light);
@@ -294,9 +323,11 @@
         transition: all 0.3s ease;
       }
 
+
       .criteria-badge:hover {
         transform: scale(1.05);
       }
+
 
       .final-message {
         background: linear-gradient(135deg, var(--accent-color), #764ba2);
@@ -309,10 +340,12 @@
         animation: pulse 2s infinite;
       }
 
+
       .final-message p {
         color: white;
         margin: 10px 0;
       }
+
 
       /* Animations */
       @keyframes fadeIn {
@@ -324,6 +357,7 @@
         }
       }
 
+
       @keyframes slideUp {
         from {
           opacity: 0;
@@ -334,6 +368,7 @@
           transform: translateY(0);
         }
       }
+
 
       @keyframes bounceIn {
         0% {
@@ -349,6 +384,7 @@
         }
       }
 
+
       @keyframes bounce {
         0%,
         100% {
@@ -358,6 +394,7 @@
           transform: translateY(-10px);
         }
       }
+
 
       @keyframes pulse {
         0%,
@@ -369,30 +406,37 @@
         }
       }
 
+
       @media (max-width: 480px) {
         .container {
           padding: 30px 20px;
         }
 
+
         .hero-title {
           font-size: 28px;
         }
+
 
         .hero-subtitle {
           font-size: 16px;
         }
 
+
         .section h3 {
           font-size: 18px;
         }
+
 
         .poster {
           max-width: 100%;
         }
 
+
         .winning-criteria {
           flex-direction: column;
         }
+
 
         .criteria-badge {
           width: 100%;
@@ -403,8 +447,9 @@
   </head>
   <body>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-      <span id="themeIcon">🌙</span>
+      <span id="themeIcon">☀️</span>
     </button>
+
 
     <div class="container">
       <!-- Treasure Hunt Poster -->
@@ -414,9 +459,11 @@
         class="poster"
       />
 
+
       <h1 class="hero-title">🏴‍☠️ Treasure Hunt</h1>
       <p class="hero-subtitle">The Ultimate Quest for Hidden Riches!</p>
       <span class="version">v1.0.0</span>
+
 
       <!-- Welcome Section -->
       <div class="welcome-section">
@@ -432,6 +479,7 @@
         <div class="treasure-icon">💎</div>
       </div>
 
+
       <!-- Download Button -->
       <a
         class="download-btn"
@@ -439,6 +487,7 @@
       >
         ⬇️ Download APK Now
       </a>
+
 
       <!-- How to Play Section -->
       <div class="section">
@@ -456,6 +505,7 @@
           </li>
         </ul>
       </div>
+
 
       <!-- Rules & Guidelines Section -->
       <div class="section">
@@ -484,6 +534,7 @@
         </ul>
       </div>
 
+
       <!-- Winning Criteria Section -->
       <div class="section">
         <h3><span class="section-icon">🏆</span> Winning Criteria</h3>
@@ -493,6 +544,7 @@
         </div>
       </div>
 
+
       <!-- Final Message -->
       <div class="final-message">
         <p>🎉 Good luck, Treasure Hunter!</p>
@@ -500,20 +552,24 @@
       </div>
     </div>
 
+
     <script>
       // Dark Mode Toggle
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
       const html = document.documentElement;
 
-      // Check for saved theme preference or default to light mode
-      const currentTheme = localStorage.getItem("theme") || "light";
+
+      // Check for saved theme preference or default to dark mode
+      const currentTheme = localStorage.getItem("theme") || "dark";
       html.setAttribute("data-theme", currentTheme);
       themeIcon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+
 
       themeToggle.addEventListener("click", () => {
         const theme = html.getAttribute("data-theme");
         const newTheme = theme === "light" ? "dark" : "light";
+
 
         html.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
