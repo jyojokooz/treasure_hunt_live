@@ -3,52 +3,522 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Treasure Hunt APK Download</title>
+    <title>🏴‍☠️ Treasure Hunt - The Ultimate Quest</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        /* Light Mode Colors */
+        --bg-gradient-start: #667eea;
+        --bg-gradient-end: #764ba2;
+        --container-bg: #ffffff;
+        --text-primary: #2d3748;
+        --text-secondary: #718096;
+        --accent-color: #667eea;
+        --accent-light: #e6f0ff;
+        --feature-bg: #f7fafc;
+        --border-color: #e2e8f0;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --gold: #ffd700;
+      }
+
+      [data-theme="dark"] {
+        /* Dark Mode Colors */
+        --bg-gradient-start: #1a202c;
+        --bg-gradient-end: #2d3748;
+        --container-bg: #1a202c;
+        --text-primary: #f7fafc;
+        --text-secondary: #cbd5e0;
+        --accent-color: #667eea;
+        --accent-light: #2d3748;
+        --feature-bg: #2d3748;
+        --border-color: #4a5568;
+        --shadow-color: rgba(0, 0, 0, 0.6);
+        --gold: #ffed4e;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff7eb3, #ff758c);
-        color: #fff;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--bg-gradient-start) 0%,
+          var(--bg-gradient-end) 100%
+        );
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
-        text-align: center;
+        padding: 20px;
+        transition: background 0.5s ease;
       }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--container-bg);
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+      }
+
       .container {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 40px;
+        background: var(--container-bg);
+        max-width: 700px;
+        width: 100%;
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px var(--shadow-color);
+        text-align: center;
+        animation: slideUp 0.6s ease;
+        transition: background 0.5s ease;
+        margin: 40px 0;
+      }
+
+      .poster {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
         border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        margin: 0 auto 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: bounceIn 0.8s ease;
+        transition: transform 0.3s ease;
       }
-      a.download-btn {
+
+      .poster:hover {
+        transform: scale(1.02);
+      }
+
+      .hero-title {
+        color: var(--text-primary);
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        animation: fadeIn 0.8s ease;
+        transition: color 0.3s ease;
+      }
+
+      .hero-subtitle {
+        color: var(--gold);
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        animation: fadeIn 1s ease;
+      }
+
+      .version {
         display: inline-block;
-        margin-top: 20px;
-        padding: 15px 30px;
-        background-color: #ff4081;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 8px;
-        transition: background 0.3s;
+        background: var(--accent-light);
+        color: var(--accent-color);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease;
+        transition: all 0.3s ease;
       }
-      a.download-btn:hover {
-        background-color: #e91e63;
+
+      .welcome-section {
+        background: var(--feature-bg);
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        animation: fadeIn 1.2s ease;
+        transition: all 0.3s ease;
+      }
+
+      .welcome-section h2 {
+        color: var(--text-primary);
+        font-size: 24px;
+        margin-bottom: 15px;
+        transition: color 0.3s ease;
+      }
+
+      .welcome-section p {
+        color: var(--text-secondary);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .treasure-icon {
+        font-size: 40px;
+        margin: 10px 0;
+        animation: bounce 2s infinite;
+      }
+
+      .download-btn {
+        display: inline-block;
+        width: 100%;
+        padding: 18px 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 1.4s ease;
+        margin: 20px 0;
+      }
+
+      .download-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .download-btn:hover::before {
+        width: 400px;
+        height: 400px;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+      }
+
+      .download-btn:active {
+        transform: translateY(0);
+      }
+
+      .section {
+        text-align: left;
+        margin: 30px 0;
+        padding: 25px;
+        background: var(--feature-bg);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .section h3 {
+        color: var(--text-primary);
+        font-size: 22px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .section-icon {
+        font-size: 28px;
+      }
+
+      .step-list,
+      .rule-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .step-item,
+      .rule-item {
+        color: var(--text-secondary);
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        padding-left: 35px;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .step-item::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--accent-light);
+        color: var(--accent-color);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        font-weight: bold;
+      }
+
+      .rule-item::before {
+        content: "•";
+        position: absolute;
+        left: 10px;
+        color: var(--accent-color);
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .winning-criteria {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .criteria-badge {
+        background: var(--accent-light);
+        color: var(--accent-color);
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .criteria-badge:hover {
+        transform: scale(1.05);
+      }
+
+      .final-message {
+        background: linear-gradient(135deg, var(--accent-color), #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: 600;
+        animation: pulse 2s infinite;
+      }
+
+      .final-message p {
+        color: white;
+        margin: 10px 0;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+        }
+        50% {
+          box-shadow: 0 0 0 15px rgba(102, 126, 234, 0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 30px 20px;
+        }
+
+        .hero-title {
+          font-size: 28px;
+        }
+
+        .hero-subtitle {
+          font-size: 16px;
+        }
+
+        .section h3 {
+          font-size: 18px;
+        }
+
+        .poster {
+          max-width: 100%;
+        }
+
+        .winning-criteria {
+          flex-direction: column;
+        }
+
+        .criteria-badge {
+          width: 100%;
+          text-align: center;
+        }
       }
     </style>
   </head>
   <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+
     <div class="container">
-      <h1>Treasure Hunt APK</h1>
-      <p>
-        Click the button below to download the APK for the Treasure Hunt game.
-      </p>
+      <!-- Treasure Hunt Poster -->
+      <img
+        src="treasure-hunt-poster.jpg"
+        alt="Treasure Hunt Game Poster"
+        class="poster"
+      />
+
+      <h1 class="hero-title">🏴‍☠️ Treasure Hunt</h1>
+      <p class="hero-subtitle">The Ultimate Quest for Hidden Riches!</p>
+      <span class="version">v1.0.0</span>
+
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Welcome to the Treasure Hunt App!</h2>
+        <p>
+          Embark on an exciting adventure filled with clues, puzzles, and hidden
+          secrets.
+        </p>
+        <p>
+          Each challenge takes you one step closer to the ultimate prize — the
+          treasure!
+        </p>
+        <div class="treasure-icon">💎</div>
+      </div>
+
+      <!-- Download Button -->
       <a
         class="download-btn"
         href="https://drive.google.com/uc?export=download&id=1Tn1uBPNvbhUiwa8dq4Jet5xpaRs7asGP"
-        >Download APK</a
       >
+        ⬇️ Download APK Now
+      </a>
+
+      <!-- How to Play Section -->
+      <div class="section">
+        <h3><span class="section-icon">⚙️</span> How to Play</h3>
+        <ul class="step-list">
+          <li class="step-item">
+            Download and install the app using the link above
+          </li>
+          <li class="step-item">Open the app and start your quest</li>
+          <li class="step-item">
+            Solve each clue in order to unlock the next stage
+          </li>
+          <li class="step-item">
+            The faster you solve, the higher your rank on the leaderboard!
+          </li>
+        </ul>
+      </div>
+
+      <!-- Rules & Guidelines Section -->
+      <div class="section">
+        <h3><span class="section-icon">📜</span> Rules & Guidelines</h3>
+        <ul class="rule-list">
+          <li class="rule-item">
+            <strong>Follow the clues in order.</strong> You must complete each
+            challenge before moving to the next.
+          </li>
+          <li class="rule-item">
+            <strong>Be quick and smart.</strong> The fastest and most accurate
+            player wins the treasure!
+          </li>
+          <li class="rule-item">
+            <strong>No external help.</strong> Use only the hints provided
+            inside the app — no Google or sharing answers!
+          </li>
+          <li class="rule-item">
+            <strong>Respect boundaries.</strong> Stay within the allowed area
+            (if location-based) and play fair.
+          </li>
+          <li class="rule-item">
+            <strong>Enjoy the experience.</strong> Teamwork, curiosity, and
+            logic will lead you to victory! 🗝️
+          </li>
+        </ul>
+      </div>
+
+      <!-- Winning Criteria Section -->
+      <div class="section">
+        <h3><span class="section-icon">🏆</span> Winning Criteria</h3>
+        <div class="winning-criteria">
+          <div class="criteria-badge">✅ All clues solved correctly</div>
+          <div class="criteria-badge">⏳ Fastest completion time</div>
+        </div>
+      </div>
+
+      <!-- Final Message -->
+      <div class="final-message">
+        <p>🎉 Good luck, Treasure Hunter!</p>
+        <p>Your adventure begins here...</p>
+      </div>
     </div>
+
+    <script>
+      // Dark Mode Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to light mode
+      const currentTheme = localStorage.getItem("theme") || "light";
+      html.setAttribute("data-theme", currentTheme);
+      themeIcon.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+
+      themeToggle.addEventListener("click", () => {
+        const theme = html.getAttribute("data-theme");
+        const newTheme = theme === "light" ? "dark" : "light";
+
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        themeIcon.textContent = newTheme === "dark" ? "☀️" : "🌙";
+      });
+    </script>
   </body>
 </html>
