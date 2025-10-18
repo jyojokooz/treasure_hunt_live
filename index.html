@@ -108,6 +108,119 @@
         transform: scale(1.02);
       }
 
+      /* Mystery Hero Section */
+      .mystery-hero {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 40px 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        animation: fadeIn 0.6s ease;
+      }
+
+      .mystery-hero h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: white;
+      }
+
+      .mystery-hero .tagline {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        color: #fff;
+      }
+
+      .mystery-details {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        margin-top: 20px;
+      }
+
+      .mystery-details p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 8px 0;
+        color: white;
+      }
+
+      .mystery-details strong {
+        font-weight: 700;
+      }
+
+      /* Enhanced Spot Registration Box with Multiple Effects */
+      .spot-registration-box {
+        background: linear-gradient(135deg, #ff0080 0%, #ff8c00 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin: 25px 0;
+        position: relative;
+        overflow: hidden;
+        animation: pulseGlow 2s ease-in-out infinite,
+          scaleAttention 3s ease-in-out infinite;
+        border: 3px solid #ffd700;
+        box-shadow: 0 0 20px rgba(255, 0, 128, 0.6),
+          0 0 40px rgba(255, 140, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .spot-registration-box::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      .spot-registration-box h3 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: white;
+        position: relative;
+        z-index: 1;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: textBounce 1s ease-in-out infinite;
+      }
+
+      .spot-registration-box p {
+        font-size: 18px;
+        line-height: 1.8;
+        margin: 10px 0;
+        color: white;
+        position: relative;
+        z-index: 1;
+        font-weight: 600;
+      }
+
+      .spot-registration-box strong {
+        color: #ffd700;
+        font-size: 20px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .registration-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 25px;
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 2px solid white;
+        animation: badgePulse 1.5s ease-in-out infinite;
+      }
+
       .hero-title {
         color: var(--text-primary);
         font-size: 36px;
@@ -302,15 +415,6 @@
         transform: translateY(0);
       }
 
-      .register-btn {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        margin-top: 10px;
-      }
-
-      .register-btn:hover {
-        box-shadow: 0 15px 35px rgba(245, 87, 108, 0.6);
-      }
-
       .section {
         text-align: left;
         margin: 30px 0;
@@ -455,7 +559,61 @@
         color: #ffc107;
       }
 
-      /* Animations */
+      /* Enhanced Animations for Spot Registration */
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 0, 128, 0.6),
+            0 0 40px rgba(255, 140, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 0, 128, 0.9),
+            0 0 60px rgba(255, 140, 0, 0.7), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      @keyframes scaleAttention {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      @keyframes textBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes badgePulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.9;
+        }
+      }
+
+      /* Base Animations */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -523,6 +681,18 @@
           font-size: 16px;
         }
 
+        .mystery-hero h2 {
+          font-size: 26px;
+        }
+
+        .mystery-hero .tagline {
+          font-size: 18px;
+        }
+
+        .spot-registration-box h3 {
+          font-size: 24px;
+        }
+
         .section h3 {
           font-size: 18px;
         }
@@ -559,11 +729,44 @@
         class="poster"
       />
 
+      <!-- Mystery Hero Section -->
+      <div class="mystery-hero">
+        <h2>🕵️‍♀️ SOLVE THE MYSTERY</h2>
+        <p class="tagline">A Treasure Hunt Adventure!</p>
+
+        <div class="mystery-details">
+          <p><strong>📅 Date:</strong> 18th October</p>
+          <p><strong>🕑 Time:</strong> 2:00 PM – 4:00 PM</p>
+          <p><strong>📍 Venue:</strong> RIT Campus</p>
+          <p><strong>💰 Registration Fee:</strong> ₹51 per team</p>
+          <p>
+            <strong>👥 Team Size:</strong> Minimum of 2 and maximum of 4 players
+            per team
+          </p>
+          <p>
+            <strong>⚙️ Mode:</strong> Hybrid – Online puzzles + Offline campus
+            hunt
+          </p>
+          <p><strong>🏆 Prize:</strong> ₹1,000 for the winning team</p>
+        </div>
+      </div>
+
       <h1 class="hero-title">🏴‍☠️ Treasure Hunt RIT</h1>
       <p class="hero-subtitle">
         Hybrid Adventure - Digital Puzzles Meet Campus Quest!
       </p>
       <span class="version">v1.0.0</span>
+
+      <!-- Enhanced Spot Registration Box -->
+      <div class="spot-registration-box">
+        <h3>🎯 📝 SPOT REGISTRATION AVAILABLE! 🎯</h3>
+        <p>
+          <strong>📍 Location:</strong> Gaming Room, Mechanical Dept @ Drawing
+          Hall
+        </p>
+        <p>✨ Walk in and register on-site! ✨</p>
+        <div class="registration-badge">🏃‍♂️ Register Now at Venue! 🏃‍♀️</div>
+      </div>
 
       <!-- Event Info Section -->
       <div class="event-info">
@@ -616,6 +819,12 @@
         <h3><span class="section-icon">💡</span> Event Highlights</h3>
         <ul class="highlight-list">
           <li class="highlight-item">
+            <strong
+              >📱 The entire Treasure Hunt happens via the official mobile
+              app!</strong
+            >
+          </li>
+          <li class="highlight-item">
             <strong>Level 1 & 2:</strong> Online puzzle-solving rounds to test
             your wit and logic
           </li>
@@ -627,13 +836,15 @@
             Each level includes filtering to advance to the next round
           </li>
           <li class="highlight-item">
-            Live scoreboard updates after every level to track your progress!
+            <strong>📊 Live scoreboard updates after every level</strong> to
+            track your progress!
           </li>
           <li class="highlight-item">
             Communication through dedicated WhatsApp group
           </li>
           <li class="highlight-item">
-            Spot registration available at the venue!
+            <strong>📝 Spot Registration Available</strong> at Gaming Room,
+            Mechanical Dept @ Drawing Hall
           </li>
         </ul>
       </div>
@@ -652,15 +863,6 @@
         📱 Download APK Now
       </a>
 
-      <!-- Register Button -->
-      <a
-        class="download-btn register-btn"
-        href="https://ritu25.live"
-        target="_blank"
-      >
-        📝 Register at ritu25.live
-      </a>
-
       <!-- How to Play Section -->
       <div class="section">
         <h3><span class="section-icon">⚙️</span> How to Play</h3>
@@ -670,7 +872,7 @@
             (Required for all teams)
           </li>
           <li class="step-item">
-            Register your team at ritu25.live or through spot registration
+            Register your team through spot registration at the venue
           </li>
           <li class="step-item">
             Join the WhatsApp group for event communications and updates
