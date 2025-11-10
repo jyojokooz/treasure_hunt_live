@@ -107,6 +107,7 @@
         cursor: pointer;
         background: var(--card);
         color: var(--white);
+        flex-shrink: 0; /* Prevents button from shrinking */
       }
 
       /* hero */
@@ -229,35 +230,14 @@
         height: 100%;
         border-radius: 18px;
         background: #071021;
-        padding: 12px;
-        color: var(--white);
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+        overflow: hidden; /* Important for containing the image */
       }
-      .mock-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 13px;
-        color: var(--muted);
-      }
-      .mock-clue {
-        padding: 10px;
-        border-radius: 10px;
-        font-weight: 700;
-        color: var(--white);
-        font-size: 13px;
-      }
-      .mock-map {
-        flex: 1;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.02);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--muted);
-        font-size: 13px;
+      /* NEW STYLE for the screenshot image */
+      .screen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image fills the space */
+        object-position: top center; /* Aligns the top of the image */
       }
 
       footer {
@@ -284,9 +264,122 @@
         animation: float 6s ease-in-out infinite;
       }
 
+      /* --- Mobile View & Responsiveness --- */
+
+      /* For tablets and smaller desktops */
       @media (max-width: 980px) {
         .hero {
           grid-template-columns: 1fr;
+          gap: 40px; /* Adds space when phone stacks below */
+        }
+        /* Puts the phone mockup on top on smaller screens */
+        .mock-wrap {
+          order: -1;
+        }
+      }
+
+      /* For most mobile devices */
+      @media (max-width: 768px) {
+        body {
+          padding: 20px;
+        }
+        .wrap {
+          padding: 20px;
+        }
+
+        /* Simplify header */
+        .brand h1 {
+          font-size: 18px;
+        }
+        .brand p {
+          font-size: 11px;
+        }
+        .logo {
+          width: 50px;
+          height: 50px;
+          font-size: 24px;
+        }
+        .theme-toggle {
+          width: 50px;
+          height: 50px;
+        }
+
+        .big-title {
+          font-size: 28px;
+        }
+        .hero-left {
+          padding: 20px;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+        .feature {
+          min-height: unset; /* Let height be automatic */
+        }
+
+        /* Make the phone responsive */
+        .phone {
+          width: 100%;
+          max-width: 300px;
+          height: 600px;
+          margin: 0 auto; /* Center it */
+        }
+      }
+
+      /* For smaller mobile phones */
+      @media (max-width: 480px) {
+        body {
+          padding: 12px;
+        }
+        .wrap {
+          padding: 16px;
+        }
+
+        /* Further simplify header for very small screens */
+        .brand h1 {
+          font-size: 16px;
+        }
+        .brand p {
+          display: none; /* Hide subtitle to save space */
+        }
+        .logo {
+          width: 44px;
+          height: 44px;
+          font-size: 20px;
+          border-radius: 10px;
+        }
+        .theme-toggle {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+        }
+
+        .big-title {
+          font-size: 24px;
+        }
+        .hero-desc {
+          font-size: 14px;
+        }
+
+        /* Stack buttons for easy tapping */
+        .btn-row {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .btn {
+          width: 100%; /* Make buttons full-width */
+        }
+
+        /* Make phone mockup fit smaller screens */
+        .phone {
+          max-width: 100%;
+          height: 580px;
+          padding: 14px;
+          border-radius: 24px;
+        }
+        .screen {
+          border-radius: 14px;
         }
       }
     </style>
@@ -301,7 +394,7 @@
             <p>Hybrid app for RITU'25 • IEDC Project</p>
           </div>
         </div>
-        <button class="theme-toggle" id="themeToggle"☀️</button>
+        <button class="theme-toggle" id="themeToggle">☀️</button>
       </header>
 
       <section class="hero">
@@ -339,7 +432,7 @@
           <div class="btn-row">
             <!-- UPDATED LINK for APK -->
             <a
-              href="https://drive.google.com/uc?export=download&id=1Tn1uBPNvbhUiwa8dq4Jet5xpaRs7asGP"
+              href="https://drive.google.com/uc?export=download&id=1Tn1BPNvbhUiwa8dq4Jet5xpaRs7asGP"
               class="btn btn-download"
               target="_blank"
               >📱 Download App</a
@@ -357,41 +450,11 @@
         <div class="mock-wrap">
           <div class="phone">
             <div class="screen">
-              <div class="mock-header">
-                <div>RESPAWN • Demo</div>
-                <div>2:00 PM</div>
-              </div>
-
-              <!-- Level 1 -->
-              <div
-                class="mock-clue"
-                style="background: linear-gradient(90deg, #7c5cff33, #7c5cff11)"
-              >
-                <strong>Level 1:</strong> Quiz — Answer 5 fun questions to
-                unlock the next clue!
-              </div>
-
-              <!-- Level 2 -->
-              <div
-                class="mock-clue"
-                style="background: linear-gradient(90deg, #ff6b6b33, #ff6b6b11)"
-              >
-                <strong>Level 2:</strong> Riddle & Puzzles — Solve to reveal the
-                next location!
-              </div>
-
-              <!-- Level 3 -->
-              <div
-                class="mock-clue"
-                style="background: linear-gradient(90deg, #ffd16633, #ffd16611)"
-              >
-                <strong>Level 3:</strong> QR Code Hunt — Scan on campus to
-                complete your quest!
-              </div>
-
-              <div class="mock-map">
-                Interactive puzzle view • live leaderboard • QR scan prompt
-              </div>
+              <!-- UPDATED: Replaced placeholder divs with the actual screenshot -->
+              <img
+                src="treasure-hunt-poster111.jpg"
+                alt="App screenshot showing quiz, riddle, and QR code hunt levels"
+              />
             </div>
           </div>
         </div>
